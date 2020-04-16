@@ -9,24 +9,23 @@ public class DbConnection {
 	private final static String userName = "S9HHYQdP81";
 	private final static String password = "7mR2jSrEgT";
 	private final static String jdbcDriver = "com.mysql.jdbc.Driver";
-	
+
 	private static Connection connection = null;
-	
-	public static Connection getDbConnection() {
-		
+
+	public static Connection get() {
+
 		try {
-			if(connection == null) {
-				
+			if (connection == null) {
+
 				Class.forName(jdbcDriver);
 				connection = DriverManager.getConnection(dbHost, userName, password);
 			}
 			return connection;
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
-	
+
 }

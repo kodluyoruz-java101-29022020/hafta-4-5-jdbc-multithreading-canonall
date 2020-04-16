@@ -9,28 +9,28 @@ import java.sql.Statement;
 public class DbSQLQuery {
 
 	public static ResultSet select(String sql) {
-		
+
 		try {
-			
-			Connection dbConnection = DbConnection.getDbConnection();
+
+			// Connection dbConnection = DbConnection.getDbConnection();
+			Connection dbConnection = DbConnection.get();
 			Statement statement = dbConnection.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
 			ResultSet resultSet = statement.executeQuery(sql);
 			return resultSet;
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 	public static PreparedStatement createPreparedStatement(String sql) {
-		
+
 		try {
-			
-			Connection dbConnection = DbConnection.getDbConnection();
+
+			// Connection dbConnection = DbConnection.getDbConnection();
+			Connection dbConnection = DbConnection.get();
 			return dbConnection.prepareStatement(sql);
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
